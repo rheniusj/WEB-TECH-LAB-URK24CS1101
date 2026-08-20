@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rhenius J | Personal Portfolio</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0b0f19;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(11, 15, 25, 0.92);
+            backdrop-filter: blur(10px);
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid #202838;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #64ffda;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #64ffda;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 10%;
+            background:
+                radial-gradient(circle at 80% 30%, #14233b, transparent 35%),
+                #0b0f19;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .small-text {
+            color: #64ffda;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 8vw, 80px);
+            line-height: 1.05;
+        }
+
+        .hero h2 {
+            color: #8892a6;
+            font-size: clamp(25px, 4vw, 40px);
+            margin: 10px 0 20px;
+        }
+
+        .hero p {
+            color: #aab3c5;
+            max-width: 650px;
+            font-size: 17px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 24px;
+            border: 1px solid #64ffda;
+            color: #64ffda;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #64ffda;
+            color: #0b0f19;
+        }
+
+        /* SECTIONS */
+
+        section {
+            padding: 100px 10%;
+        }
+
+        .section-title {
+            color: #64ffda;
+            font-size: 15px;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        section h2 {
+            font-size: 35px;
+            margin-bottom: 25px;
+        }
+
+        .about-text {
+            color: #aab3c5;
+            max-width: 800px;
+            font-size: 17px;
+        }
+
+        /* SKILLS */
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 18px;
+            margin-top: 30px;
+        }
+
+        .skill {
+            background: #111827;
+            border: 1px solid #202838;
+            padding: 22px;
+            border-radius: 10px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            transform: translateY(-5px);
+            border-color: #64ffda;
+        }
+
+        .skill h3 {
+            color: #64ffda;
+            margin-bottom: 8px;
+        }
+
+        .skill p {
+            color: #8892a6;
+        }
+
+        /* PROJECTS */
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .project {
+            background: #111827;
+            border: 1px solid #202838;
+            padding: 25px;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .project:hover {
+            transform: translateY(-7px);
+            border-color: #64ffda;
+        }
+
+        .project h3 {
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .project p {
+            color: #8892a6;
+        }
+
+        .tag {
+            display: inline-block;
+            margin-top: 15px;
+            margin-right: 5px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            background: #182332;
+            color: #64ffda;
+            font-size: 12px;
+        }
+
+        /* BMI */
+
+        .calculator {
+            max-width: 550px;
+            background: #111827;
+            padding: 30px;
+            border: 1px solid #202838;
+            border-radius: 12px;
+        }
+
+        .calculator label {
+            display: block;
+            margin-top: 15px;
+            color: #aab3c5;
+        }
+
+        .calculator input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 7px;
+            background: #0b0f19;
+            border: 1px solid #30394a;
+            color: white;
+            border-radius: 6px;
+        }
+
+        .calculator button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: #64ffda;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #0b0f19;
+            border-radius: 6px;
+        }
+
+        /* EVENTS */
+
+        .event-box {
+            max-width: 600px;
+            padding: 30px;
+            background: #111827;
+            border: 1px solid #202838;
+            border-radius: 12px;
+        }
+
+        .event-box input,
+        .event-box select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            background: #0b0f19;
+            color: white;
+            border: 1px solid #30394a;
+            border-radius: 6px;
+        }
+
+        .event-box button {
+            padding: 10px 20px;
+            background: #64ffda;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #eventResult {
+            margin-top: 15px;
+            color: #64ffda;
+        }
+
+        /* CONTACT */
+
+        .contact {
+            text-align: center;
+            background: #0e1420;
+        }
+
+        .contact p {
+            color: #8892a6;
+            margin-bottom: 20px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            border-top: 1px solid #202838;
+            color: #687386;
+        }
+
+        /* MOBILE */
+
+        @media(max-width: 700px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .hero {
+                padding: 100px 7%;
+            }
+
+            section {
+                padding: 80px 7%;
+            }
+
+            .hero h1 {
+                font-size: 50px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+        R<span>J</span>
+    </div>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#demo">JavaScript</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <p class="small-text">
+            Hi, my name is
+        </p>
+
+        <h1>
+            Rhenius J.
+        </h1>
+
+        <h2>
+            AI / ML Enthusiast & Developer
+        </h2>
+
+        <p>
+            I am a Computer Science student passionate about
+            Artificial Intelligence, Machine Learning, Data,
+            Web Development and building meaningful technology.
+        </p>
+
+        <a href="#projects" class="btn">
+            View My Work
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+    <p class="section-title">
+        01. ABOUT ME
+    </p>
+
+    <h2>
+        About Me
+    </h2>
+
+    <p class="about-text">
+
+        I am a Computer Science student interested in
+        Artificial Intelligence, Machine Learning,
+        Data Engineering and modern web technologies.
+
+        I enjoy exploring technology through practical
+        projects and continuously developing my technical
+        and problem-solving skills.
+
+    </p>
+
+</section>
+
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+    <p class="section-title">
+        02. SKILLS
+    </p>
+
+    <h2>
+        My Skills
+    </h2>
+
+    <div class="skills">
+
+        <div class="skill">
+            <h3>Java</h3>
+            <p>Programming & OOP</p>
+        </div>
+
+        <div class="skill">
+            <h3>Python</h3>
+            <p>AI & Data</p>
+        </div>
+
+        <div class="skill">
+            <h3>SQL</h3>
+            <p>Database Management</p>
+        </div>
+
+        <div class="skill">
+            <h3>HTML / CSS</h3>
+            <p>Web Development</p>
+        </div>
+
+        <div class="skill">
+            <h3>JavaScript</h3>
+            <p>DOM & Events</p>
+        </div>
+
+        <div class="skill">
+            <h3>AI / ML</h3>
+            <p>Machine Learning</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+    <p class="section-title">
+        03. PROJECTS
+    </p>
+
+    <h2>
+        Featured Projects
+    </h2>
+
+    <div class="projects">
+
+        <div class="project">
+
+            <h3>
+                Autonomous Drone Delivery
+            </h3>
+
+            <p>
+                A smart drone delivery system using
+                data handling, mapping and intelligent
+                decision-making.
+            </p>
+
+            <span class="tag">AI</span>
+            <span class="tag">IoT</span>
+            <span class="tag">Data</span>
+
+        </div>
+
+
+        <div class="project">
+
+            <h3>
+                EcoSight
+            </h3>
+
+            <p>
+                An AI-powered recycling assistant that
+                analyzes uploaded images and provides
+                recycling recommendations.
+            </p>
+
+            <span class="tag">React</span>
+            <span class="tag">AI</span>
+            <span class="tag">Firebase</span>
+
+        </div>
+
+
+        <div class="project">
+
+            <h3>
+                FinTech Application
+            </h3>
+
+            <p>
+                A digital finance concept focused on
+                safe payments, spending analysis and
+                intelligent saving.
+            </p>
+
+            <span class="tag">FinTech</span>
+            <span class="tag">UPI</span>
+            <span class="tag">Security</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- JAVASCRIPT DEMO -->
+
+<section id="demo">
+
+    <p class="section-title">
+        04. JAVASCRIPT
+    </p>
+
+    <h2>
+        Interactive JavaScript Demo
+    </h2>
+
+
+    <!-- BMI -->
+
+    <div class="calculator">
+
+        <h3>
+            BMI Calculator
+        </h3>
+
+        <label>
+            Weight (kg)
+        </label>
+
+        <input
+            type="number"
+            id="weight"
+            placeholder="Example: 70"
+            step="0.1"
+        >
+
+        <label>
+            Height (m)
+        </label>
+
+        <input
+            type="number"
+            id="height"
+            placeholder="Example: 1.75"
+            step="0.01"
+        >
+
+        <button onclick="calculateBMI()">
+            Calculate BMI
+        </button>
+
+        <div class="result">
+
+            BMI:
+            <strong id="score">-</strong>
+
+            <br>
+
+            Body Type:
+            <strong id="type">-</strong>
+
+        </div>
+
+    </div>
+
+
+    <br><br>
+
+
+    <!-- DOM EVENTS -->
+
+    <div class="event-box">
+
+        <h3>
+            DOM & Events
+        </h3>
+
+        <input
+            type="text"
+            id="nameInput"
+            placeholder="Enter your name"
+            onkeyup="showName()"
+        >
+
+        <select
+            id="interest"
+            onchange="showInterest()"
+        >
+
+            <option value="">
+                Select your interest
+            </option>
+
+            <option value="Artificial Intelligence">
+                Artificial Intelligence
+            </option>
+
+            <option value="Machine Learning">
+                Machine Learning
+            </option>
+
+            <option value="Web Development">
+                Web Development
+            </option>
+
+            <option value="Data Science">
+                Data Science
+            </option>
+
+        </select>
+
+        <button onclick="welcomeUser()">
+            Click Me
+        </button>
+
+        <p id="eventResult">
+            JavaScript event results appear here.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+    <p class="section-title">
+        05. CONTACT
+    </p>
+
+    <h2>
+        Let's Connect
+    </h2>
+
+    <p>
+        Interested in technology, AI and building
+        innovative projects.
+    </p>
+
+    <a
+        href="mailto:yourmail@example.com"
+        class="btn"
+    >
+        Email Me
+    </a>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    © 2026 Rhenius J. All Rights Reserved.
+
+</footer>
+
+
+<script>
+
+
+/* ==========================
+   BMI CALCULATOR
+========================== */
+
+function calculateBMI() {
+
+    var weight =
+        parseFloat(
+            document.getElementById("weight").value
+        );
+
+    var height =
+        parseFloat(
+            document.getElementById("height").value
+        );
+
+
+    if (
+        isNaN(weight) ||
+        isNaN(height) ||
+        weight <= 0 ||
+        height <= 0
+    ) {
+
+        document.getElementById("score").innerHTML =
+            "Invalid";
+
+        document.getElementById("type").innerHTML =
+            "Enter valid values";
+
+        return;
+
+    }
+
+
+    var bmi =
+        weight / (height * height);
+
+
+    document.getElementById("score").innerHTML =
+        bmi.toFixed(2);
+
+
+    var type;
+
+
+    if (bmi < 18) {
+
+        type = "Underweight";
+
+    }
+
+    else if (bmi <= 25) {
+
+        type = "Normal";
+
+    }
+
+    else if (bmi <= 30) {
+
+        type = "Overweight";
+
+    }
+
+    else {
+
+        type = "Obese";
+
+    }
+
+
+    document.getElementById("type").innerHTML =
+        type;
+
+}
+
+
+/* ==========================
+   KEYUP EVENT
+========================== */
+
+function showName() {
+
+    var name =
+        document.getElementById("nameInput").value;
+
+
+    if (name === "") {
+
+        document.getElementById("eventResult").innerHTML =
+            "Start typing your name...";
+
+    }
+
+    else {
+
+        document.getElementById("eventResult").innerHTML =
+            "Hello, " + name + "!";
+
+    }
+
+}
+
+
+/* ==========================
+   CHANGE EVENT
+========================== */
+
+function showInterest() {
+
+    var interest =
+        document.getElementById("interest").value;
+
+
+    if (interest !== "") {
+
+        document.getElementById("eventResult").innerHTML =
+            "Your interest is " + interest + ".";
+
+    }
+
+}
+
+
+/* ==========================
+   CLICK EVENT
+========================== */
+
+function welcomeUser() {
+
+    document.getElementById("eventResult").innerHTML =
+        "Welcome to my portfolio!";
+
+}
+
+
+/* ==========================
+   DOCUMENT EVENT LISTENER
+========================== */
+
+document.addEventListener(
+    "click",
+    function () {
+
+        console.log("Document clicked");
+
+    }
+);
+
+</script>
+
+
+</body>
+</html>
